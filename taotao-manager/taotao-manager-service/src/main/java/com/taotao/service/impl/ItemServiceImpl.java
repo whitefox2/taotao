@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.taotao.common.pojo.EasyUIResult;
 import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.common.utils.IDUtils;
+import com.taotao.mapper.TbItemCatMapper;
 import com.taotao.mapper.TbItemDescMapper;
 import com.taotao.mapper.TbItemMapper;
 import com.taotao.pojo.TbItem;
@@ -76,5 +77,39 @@ public class ItemServiceImpl implements ItemService {
         }
 
         return TaotaoResult.build(500,"添加商品有误，请重新输入");
+    }
+
+    @Override
+    public TaotaoResult downItem(Integer[] ids) {
+        int i = tbItemMapper.downItem(ids);
+        if (i != 0) {
+            return TaotaoResult.ok();
+        }
+        return null;
+    }
+
+    @Override
+    public TaotaoResult upItem(Integer[] ids) {
+        int i = tbItemMapper.upItem(ids);
+        if (i != 0) {
+            return TaotaoResult.ok();
+        }
+        return null;
+    }
+
+    @Override
+    public TaotaoResult getItemDesc(Long id) {
+        TbItemDesc itemDesc = tbItemDescMapper.findDescById(id);
+        return TaotaoResult.ok(itemDesc);
+    }
+
+    @Override
+    public TaotaoResult updateItem(TbItem item, String desc) {
+        int i = tbItemMapper.updateItem(item);
+        Long ID = item.getId();
+        int j = tbItemDescMapper.updateItemDesc(desc,ID);
+        TaotaoResult result = new TaotaoResult();
+        result.setStatus(200);
+        return result;
     }
 }

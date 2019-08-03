@@ -15,4 +15,11 @@ public interface ItemService {
 
     TaotaoResult addItems(TbItem tbItem, String desc);
 
+    TaotaoResult downItem(Integer[] ids);
+
+    TaotaoResult upItem(Integer[] ids);
+
+    TaotaoResult getItemDesc(Long id);
+
+    TaotaoResult updateItem(TbItem item, String desc);
 }

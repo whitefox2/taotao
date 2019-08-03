@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ItemController {
     @Autowired
     private ItemService itemService;
-
-
     @RequestMapping("/item/{itemId}")
     @ResponseBody
     public TbItem findItem(@PathVariable long itemId){
@@ -43,6 +41,30 @@ public class ItemController {
     @ResponseBody
     public TaotaoResult addItems(TbItem tbItem, String desc){
         TaotaoResult result = itemService.addItems(tbItem, desc);
+        return result;
+    }
+    @RequestMapping("/rest/item/instock")
+    @ResponseBody
+    public TaotaoResult downItem(Integer[] ids){
+        TaotaoResult result = itemService.downItem(ids);
+        return result;
+    }
+    @RequestMapping("/rest/item/reshelf")
+    @ResponseBody
+    public TaotaoResult upItem(Integer[] ids){
+        TaotaoResult result = itemService.upItem(ids);
+        return result;
+    }
+    @RequestMapping(value="/rest/item/query/item/desc/{id}")
+    @ResponseBody
+    public TaotaoResult getItemDesc(@PathVariable("id") Long id) {
+        TaotaoResult result = itemService.getItemDesc(id);
+        return result;
+    }
+    @RequestMapping(value="/rest/item/update")
+    @ResponseBody
+    public TaotaoResult updateItem(TbItem item, String desc) {
+        TaotaoResult result = itemService.updateItem(item, desc);
         return result;
     }
 }
