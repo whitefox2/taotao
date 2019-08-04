@@ -18,9 +18,7 @@ import org.apache.commons.net.ftp.FTPReply;
  */
 public class FtpUtil {
 	//文件上传
-	public static boolean uploadFile(String host, int port, String username, 
-String password, String basePath,
-			String filePath, String filename, InputStream input) {
+	public static boolean uploadFile(String host, int port, String username, String password, String basePath,String filePath, String filename, InputStream input) {
 		boolean result = false;
 		FTPClient ftp = new FTPClient();
 		try {
