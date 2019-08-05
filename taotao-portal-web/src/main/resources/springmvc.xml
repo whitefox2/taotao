@@ -13,6 +13,8 @@
 	   http://code.alibabatech.com/schema/dubbo/dubbo.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+    <context:property-placeholder location="classpath:*.properties" />
+    <!-- 数据库连接池 -->
     <!--扫描controller层所有注解-->
     <context:component-scan base-package="com.taotao.portal.controller" />
     <!--注解驱动-->
@@ -32,4 +34,9 @@
 
     <dubbo:reference interface="com.taotao.service.ItemService" id="itemService"/>
    -->
+    <dubbo:application name="taotao-portal-web"/>
+    <dubbo:registry protocol="zookeeper"
+                    address="47.102.122.134:2181" />
+
+    <dubbo:reference interface="com.taotao.content.service.ContentService" id="contentService"/>
 </beans>
