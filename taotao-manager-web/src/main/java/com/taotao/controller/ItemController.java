@@ -39,8 +39,8 @@ public class ItemController {
     }
     @RequestMapping("/item/save")
     @ResponseBody
-    public TaotaoResult addItems(TbItem tbItem, String desc){
-        TaotaoResult result = itemService.addItems(tbItem, desc);
+    public TaotaoResult addItems(TbItem tbItem, String desc,String itemParams){
+        TaotaoResult result = itemService.addItems(tbItem, desc, itemParams);
         return result;
     }
     @RequestMapping("/rest/item/instock")

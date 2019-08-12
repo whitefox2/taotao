@@ -42,7 +42,7 @@
         <property name="basePackage" value="com.taotao.mapper" />
     </bean>
     <!--扫描service层的所有注解-->
-    <context:component-scan base-package="com.taotao.content.service"></context:component-scan>
+    <context:component-scan base-package="com.taotao.content"></context:component-scan>
 
     <!-- 事务管理器 -->
     <bean id="transactionManager"
@@ -70,6 +70,11 @@
         <aop:advisor advice-ref="txAdvice"
                      pointcut="execution(* com.taotao.content.service.*.*(..))" />
     </aop:config>
+    <!--redis-->
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+        <constructor-arg name="host" value="101.201.239.34"></constructor-arg>
+        <constructor-arg name="port" value="6379"></constructor-arg>
+    </bean>
 
     <!--注册服务
         卖房子的人

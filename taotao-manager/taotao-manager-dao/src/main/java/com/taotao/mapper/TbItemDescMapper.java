@@ -12,4 +12,6 @@ public interface TbItemDescMapper {
     TbItemDesc findDescById(Long id);
     @Update("update tbitemdesc set itemDesc = #{0} where itemId = #{1}")
     int updateItemDesc(String desc,Long ID);
+    @Select("SELECT * FROM tbitemdesc WHERE itemId = #{itemId}")
+    TbItemDesc getItemDescByItemId(Long itemId);
 }

@@ -4,8 +4,11 @@ import com.taotao.common.pojo.EasyUIResult;
 import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.pojo.TbContent;
 
+import java.util.List;
+
 public interface ContentService {
     EasyUIResult findContentAll(long contentCategoryId);
+
     TaotaoResult addContent(TbContent tbContent);
 
     TaotaoResult updateContent(TbContent tbContent);
@@ -15,4 +18,6 @@ public interface ContentService {
     void updateCont(int id, String name);
 
     void deleteCont(Long id);
+
+    List<TbContent> getContentAll(long contentCategoryId);
 }

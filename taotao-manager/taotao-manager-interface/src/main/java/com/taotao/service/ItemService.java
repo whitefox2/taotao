@@ -13,7 +13,7 @@ public interface ItemService {
 
     TaotaoResult deleteItems(Integer[] ids);
 
-    TaotaoResult addItems(TbItem tbItem, String desc);
+    TaotaoResult addItems(TbItem tbItem, String desc, String itemParams);
 
     TaotaoResult downItem(Integer[] ids);
 
@@ -22,4 +22,6 @@ public interface ItemService {
     TaotaoResult getItemDesc(Long id);
 
     TaotaoResult updateItem(TbItem item, String desc);
+
+    TbItemDesc getItemDescByItemId(Long itemId);
 }

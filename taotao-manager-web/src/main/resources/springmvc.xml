@@ -13,6 +13,8 @@
 	   http://code.alibabatech.com/schema/dubbo/dubbo.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+    <!-- 加载配置文件 -->
+    <context:property-placeholder location="classpath:*.properties" />
     <!--扫描controller层所有注解-->
     <context:component-scan base-package="com.taotao.controller" />
     <!--注解驱动-->
@@ -58,4 +60,8 @@
     <dubbo:reference interface="com.taotao.content.service.ContentCategoryService" id="contentCategoryService"/>
 
     <dubbo:reference interface="com.taotao.content.service.ContentService" id="contentService"/>
+
+    <dubbo:reference interface="com.taotao.searchs.service.SearchItemService" id="searchItemService"/>
+
+    <dubbo:reference interface="com.taotao.service.ItemParamService" id="itemParamService"/>
 </beans>
